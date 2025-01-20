@@ -3,6 +3,9 @@ package com.mypackage.demoApp.model;
 //package net.javaguides.springboot.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "employees")
@@ -12,12 +15,18 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@NotBlank(message = "first name is mandatory")
+	@Size(min = 4, max = 500, message 
+      = "First name must be between 4 and above characters")
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotBlank(message = "last name is mandatory")
 	@Column(name = "last_name")
 	private String lastName;
 	
+	@NotBlank(message = "Email is mandatory")
+	@Email(message="email format is wrong written")
 	@Column(name = "email_address")
 	private String emailId;
 	
